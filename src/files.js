@@ -69,6 +69,5 @@ if (workspaceAvailable) {
 }
 
 OCA.Text = {
-	Editor: FilesEditor,
 	RichWorkspaceEnabled: workspaceEnabled,
 }
