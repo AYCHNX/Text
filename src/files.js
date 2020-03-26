@@ -21,7 +21,7 @@
  */
 
 import Vue from 'vue'
-import FilesEditor from './components/FilesEditor'
+import ViewerComponent from './components/ViewerComponent'
 import PreviewPlugin from './files/PreviewPlugin'
 import { registerFileActionFallback, registerFileCreate, FilesWorkspacePlugin } from './helpers/files'
 import { openMimetypesMarkdown, openMimetypesPlainText } from './helpers/mime'
@@ -37,14 +37,33 @@ const workspaceEnabled = loadState('text', 'workspace_enabled')
 registerFileCreate()
 
 document.addEventListener('DOMContentLoaded', () => {
+	function filesAppTriggersLoadViewerEvent() {
+		const [major, minor, maintenance] = OC.config.version.split('.').map(x => parseInt(x))
+		if (major > 18) {
+			return true
+		} else if (major < 18) {
+			return false
+		}
+
+		if (minor > 0) {
+			return true
+		}
+
+		if (maintenance >= 4) {
+			return true
+		}
+
+		return false
+	}
+
 	if (typeof OCA.Viewer === 'undefined') {
 		console.error('Viewer app is not installed')
 		registerFileActionFallback()
-	} else {
+	} else if (!filesAppTriggersLoadViewerEvent()) {
 		OCA.Viewer.registerHandler({
 			id: 'text',
 			mimes: [...openMimetypesMarkdown, ...openMimetypesPlainText],
-			component: FilesEditor,
+			component: ViewerComponent,
 			group: null,
 		})
 	}

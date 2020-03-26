@@ -1,2 +1,2 @@
-(window.textWebpackJsonp=window.textWebpackJsonp||[]).push([[154],{340:function(n,s){n.exports=function(n){return{aliases:["console"],contains:[{className:"meta",begin:"^\\s{0,3}[/\\w\\d\\[\\]()@-]*[>%$#]",starts:{end:"$",subLanguage:"bash"}}]}}}}]);
-//# sourceMappingURL=shell.js.map?v=20e420aca39d287d9650
+(window.textWebpackJsonp=window.textWebpackJsonp||[]).push([[154],{342:function(n,s){n.exports=function(n){return{aliases:["console"],contains:[{className:"meta",begin:"^\\s{0,3}[/\\w\\d\\[\\]()@-]*[>%$#]",starts:{end:"$",subLanguage:"bash"}}]}}}}]);
+//# sourceMappingURL=shell.js.map?v=f72ba2bd6aaafb990e15
